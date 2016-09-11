@@ -1,0 +1,48 @@
+{
+    "env": {
+        "node": true,
+    },
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "blockBindings": true,
+            "generators": true,
+            "arrowFunctions": true,
+            "destructuring": true,
+            "defaultParams": true,
+            "restParams": true,
+            "spread": true,
+            "templateStrings": true,
+            "modules": true,
+            "arrow-body-style": true,
+            "jsx": true,
+            "objectLiteralShorthandMethods": true
+        }
+    },
+    "rules": {
+        "curly": 2,
+        "semi": 1,
+        "eqeqeq": 1,
+        "no-eval": 2,
+        "no-unused-vars": 1,
+        "no-use-before-define": [1, "nofunc"],
+        "no-undef": 1,
+        "global-require": 0,
+        "quotes": [1, "single", "avoid-escape"],
+        "indent": [2, "tab", {"SwitchCase": 1}],
+        "no-mixed-spaces-and-tabs": 2,
+        "no-trailing-spaces": [2, { "skipBlankLines": true }],
+        "arrow-parens": [1, "as-needed"],
+        "keyword-spacing": [1, {"before": true, "after": true}],
+        "no-var": 1
+    },
+    "globals": {
+        "_": true,
+        "$",
+        "console": true,
+        "window": true,
+        "document",
+    }
+}

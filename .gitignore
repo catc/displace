@@ -1,0 +1,13 @@
+# Node stuff.
+node_modules/
+npm-debug.log
+
+# Folder view config.
+.DS_Store
+
+# Thumbnail caches.
+._*
+Thumbs.db
+
+## TEMP
+testing/

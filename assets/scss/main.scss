@@ -1,0 +1,45 @@
+
+@import "normalize";
+
+body {
+	background: pink;
+}
+
+
+body {
+	// background: grey;
+	padding: 20px;
+}
+
+.one {
+	padding: 50px;
+	background: black;
+}
+
+.two {
+	padding: 50px;
+	background: blue;
+}
+
+.three {
+	padding: 50px;
+	background: orange;
+}
+
+.four {
+	padding: 50px;
+	background: yellow;
+	height: 400px;
+}
+
+/*.five {
+	padding: 50px;
+	background: purple;
+}*/
+
+.moveable {
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	background: red;
+}
