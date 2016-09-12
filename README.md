@@ -14,7 +14,7 @@ Reference `displace.min.js` and use via `displace`. If using a module loader:
 let displace = require('displace');
 
 // es6
-import displace from 'dist/displace.min.js;
+import displace from 'dist/displace.min.js';
 ```
 
 #### Initialize
