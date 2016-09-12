@@ -6,12 +6,12 @@ const sassLoaders = [
 	// 'css?sourceMap',
 	// 'sass?sourceMap' + '&includePaths[]=' + path.resolve(__dirname, './gh-page/scss/')
 	'css',
-	'sass' + '?includePaths[]=' + path.resolve(__dirname, './gh-page/scss/')
+	'sass' + '?includePaths[]=' + path.resolve(__dirname, './docs/scss/')
 ];
 
 module.exports = [
 	{
-		entry: './gh-page/js/main.js',
+		entry: './docs/js/main.js',
 		// entry: './gh-page/js/main.js',
 
 		// resolves paths similar to NODE_PATH=.
@@ -19,18 +19,18 @@ module.exports = [
 		resolve: {
 			root: [
 				__dirname + '/',
-				__dirname + '/gh-page/scss'
+				__dirname + '/docs/scss'
 			]
 		},
 		output: {
-			path: path.resolve(__dirname, 'gh-page'),
-			publicPath: '/gh-page/',
+			path: path.resolve(__dirname, 'docs'),
+			publicPath: '/',
 			filename: 'bundle.js' 	// can change to [name].js if multiple entry points
 		},
 		sassLoader: {
 			/*includePaths: [
 				// is it req?
-				path.resolve(__dirname, './gh-page/scss')
+				path.resolve(__dirname, './docs/scss')
 			]*/
 		},
 		// devtool: 'source-map',
@@ -65,7 +65,7 @@ module.exports = [
 		devServer: {
 			// where index.html will be looked up
 			// inline: true,
-			contentBase: './'
+			contentBase: './docs/'
 		}
 	}
 ];
