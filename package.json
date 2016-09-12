@@ -6,11 +6,12 @@
   "scripts": {
     "build": "NODE_PATH=. NODE_ENV=prod webpack --config ./webpack.config.build.js",
     "dev": "NODE_PATH=. NODE_ENV=prod webpack -w --config ./webpack.config.build.js",
-
     "zdev": "NODE_PATH=. webpack -w --config ./dev.config.js",
     "server1": "NODE_PATH=. webpack-dev-server -w --hot",
     "sb": "NODE_PATH=. webpack --config ./webpack.config.server.js",
-    "server": "NODE_PATH=. webpack-dev-server -w  --config ./webpack.config.server.js"
+    "server": "NODE_PATH=. webpack-dev-server -w  --config ./webpack.config.server.js",
+
+    "svg:clean": "node ./gh-page/img/cleanup.js"
   },
   "repository": {
     "type": "git",
@@ -45,6 +46,7 @@
     "babel-loader": "^6.2.5",
     "babel-preset-es2015": "^6.14.0",
     "eslint": "^2.13.1",
+    "highlight.js": "^9.6.0",
     "node-sass": "^3.9.3",
     "sass-loader": "^4.0.2",
     "webpack": "^1.13.2",

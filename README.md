@@ -1,7 +1,7 @@
 
 # displace.js
 
-A tiny javascript library for creating moveable and draggable DOM elements.
+A minimal javascript library to enable moveable DOM elements.
 - ~1.2kb gzipped
 - no dependencies/bloat
 - IE9+
@@ -14,7 +14,7 @@ Reference `displace.min.js` and use via `displace`. If using a module loader:
 let displace = require('displace');
 
 // es6
-import displace = require('displace');
+import displace from 'dist/displace.min.js;
 ```
 
 #### Initialize
@@ -45,4 +45,16 @@ Constrains element to its parent container
 
 #### `relativeTo`
 Constrains element to the specified DOM element. Requires `constrain` to be `true`.
-##### Default: `undefined`
+##### Default: `null`
+
+#### `onMouseDown`
+Function that is triggered when user clicks down on moveable element.
+##### Default: `null`
+
+#### `onMouseMove`
+Function that is triggered when user moves element.
+##### Default: `null`
+
+#### `onMouseUp`
+Function that is triggered when user clicks up on moveable element.
+##### Default: `null`

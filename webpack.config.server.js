@@ -3,37 +3,37 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const sassLoaders = [
-	'css?sourceMap',
-	'sass?sourceMap' + '&includePaths[]=' + path.resolve(__dirname, './assets/scss/')
+	// 'css?sourceMap',
+	// 'sass?sourceMap' + '&includePaths[]=' + path.resolve(__dirname, './gh-page/scss/')
+	'css',
+	'sass' + '?includePaths[]=' + path.resolve(__dirname, './gh-page/scss/')
 ];
 
 module.exports = [
 	{
-		entry: {
-			app: './assets/js/main.js'
-		},
-		// entry: './assets/js/main.js',
+		entry: './gh-page/js/main.js',
+		// entry: './gh-page/js/main.js',
 
 		// resolves paths similar to NODE_PATH=.
 		// resolve: {root: __dirname + '/' },
 		resolve: {
 			root: [
 				__dirname + '/',
-				__dirname + '/assets/scss'
+				__dirname + '/gh-page/scss'
 			]
 		},
 		output: {
-			path: path.resolve(__dirname, 'assets'),
-			publicPath: '/assets/',
-			filename: 'bundle.js' 	// can change to [name].js
+			path: path.resolve(__dirname, 'gh-page'),
+			publicPath: '/gh-page/',
+			filename: 'bundle.js' 	// can change to [name].js if multiple entry points
 		},
 		sassLoader: {
 			/*includePaths: [
 				// is it req?
-				path.resolve(__dirname, './assets/scss')
+				path.resolve(__dirname, './gh-page/scss')
 			]*/
 		},
-		devtool: 'source-map',
+		// devtool: 'source-map',
 		module: {
 			loaders: [
 				{
@@ -48,10 +48,6 @@ module.exports = [
 			]
 		},
 		plugins: [
-			// if do [name] and entry name (eg: entry.app), names it app.scss file
-			// if do [name] and no entry name (as obj), uses first scss file
-			// if do 'somename.scss', then sets it as that
-			// new ExtractTextPlugin('style.css')
 			new webpack.optimize.UglifyJsPlugin({
 				compress: {
 					warnings: false,
@@ -60,12 +56,16 @@ module.exports = [
 					comments: false
 				}
 			}),
-			new ExtractTextPlugin('[name].css')
+			// if do [name] and entry name (eg: entry.app), names it app.scss file
+			// if do [name] and no entry name (as obj), uses first scss file
+			// if do 'somename.scss', then sets it as that
+			// new ExtractTextPlugin('style.css')
+			new ExtractTextPlugin('style.css')
 		],
 		devServer: {
 			// where index.html will be looked up
-			inline: true,
+			// inline: true,
 			contentBase: './'
 		}
-	},
+	}
 ];

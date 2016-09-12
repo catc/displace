@@ -1,0 +1,58 @@
+
+.intro {
+	background: #ffd044;
+	border-bottom: 1px solid #FFC107;
+	padding: 7em 4em 4em;
+	margin-bottom: 7em;
+
+	&__description {
+		font-size: 1.7rem;
+		color: $b5;
+	}
+
+	&__table-of-contents {
+		margin-top: 2em;
+		a {
+			display: inline-block;
+			font-size: 1.5rem;
+			padding: 14px 20px 13px;
+			text-decoration: none;
+			border-radius: 4px;
+			margin-right: 1em;
+			transition: 0.2s ease-out;
+			
+			background: $b4;
+			color: white;
+
+			span {
+				display: inline-block;
+				margin-right: 8px;
+				vertical-align: -3px;
+				&:before {
+					color: inherit;
+				}
+			}
+			&:hover {
+				color: $c1;
+			}
+		}
+	}
+
+	&__info {
+		list-style: none;
+		counter-reset: list;
+		padding-left: 1em;
+		li {
+			margin: 6px 0;
+			&:before {
+				@extend %ico;
+				content: "\e904";
+				font-size: 1.6rem;
+				display: inline-block;
+				vertical-align: -2px;
+				margin-right: 10px;
+				color: $c4;
+			}
+		}
+	}
+}

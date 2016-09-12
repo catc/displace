@@ -1,0 +1,94 @@
+
+.demo {
+	padding: 4em;
+	&__wrapper {
+		width: 600px;
+	}
+	&__example {
+		width: 100%;
+	}
+	&__actions {
+		border: 2px solid $b3;
+		border-radius: 4px 4px 0 0;
+		button {
+			padding: 14px 0;
+			width: 25%;
+			cursor: pointer;
+			font-family: $font-main;
+			color: lighten($b5, 20%);
+			&:not(:first-child){
+				border-left: 2px solid $b3;
+			}
+			&.selected {
+				color: $b3;
+				font-weight: bold;
+			}
+		}
+	}
+
+	
+	&__code {
+		margin-top: 0 !important;
+		border-radius: 0 0 4px 4px;
+	}
+
+	&__tag {
+		position: absolute;
+		left: 7px;
+		top: 4px;
+		font-size: 1.3rem;
+		color: $b2;
+	}
+	&__boxes {
+		position: relative;
+		height: 400px;
+		// background: $c3;
+		background: $c2;
+	}
+
+	&__one {
+		display: inline-block;
+		background: #ffb300;
+		height: 330px;
+		position: relative;
+		left: 70px;
+		top: 40px;
+		width: 500px;
+	}
+
+	&__two {
+		display: inline-block;
+		// background: $c1;
+		background: #ffd700;
+		height: 70%;
+		position: relative;
+		left: 50px;
+		top: 50px;
+		width: 390px;
+	}
+
+
+}
+
+
+.moveable {
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	background: #007bff;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+	cursor: move;
+	z-index: 5;
+	transition: transform 0.15s ease-out, background 0.15s ease-out;
+	&.active {
+		// transform: rotate(15deg);
+		transform: scale(1.2);
+		background: #00bacf;
+	}
+}
+

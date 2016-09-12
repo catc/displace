@@ -1,0 +1,102 @@
+
+// import resets
+@import "basic/normalize";
+@import "basic/global";
+@import "basic/fonts";
+
+// import highlight.js style
+@import "~highlight.js/styles/monokai-sublime.css";
+
+// main
+@import "main/intro";
+@import "main/demo";
+
+body {
+	min-width: 960px;
+	padding-bottom: 4em;
+}
+
+h1 {
+	font-size: 3.4rem;
+}
+h2 {
+	font-size: 2.2rem;
+	margin: 3em 0 1em;
+}
+h3 {
+	margin-top: 1.8em;
+	font-size: 1.8rem;
+}
+h4 {
+	color: $c4;
+	margin: 0;
+	margin-top: 2em;
+}
+
+* {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+
+p {
+	&.content {
+		margin: 8px 0;
+		line-height: 2.6rem;
+		a:hover {
+			transition: 0.15s ease-out;
+			color: $c4;
+		}
+	}
+	.tab {
+		margin-left: 2em;
+	}
+	&.top-space {
+		margin-top: 2em;
+	}
+}
+
+.non-code {
+	max-width: 500px;
+	// padding: $pz;
+	padding: 0 4em;
+}
+
+.api {
+	margin-left: 2em;
+}
+.api-info {
+	color: $c2;
+	color: $c1;
+	display: inline-block;
+	margin-right: 9px;
+	vertical-align: -3px
+}
+
+code {
+	&.inline {
+		background: $c1;
+		display: inline-block;
+		padding: 0px 6px;
+		border-radius: 3px;
+		font-size: 1.3rem;
+		line-height: 1.8rem;
+		vertical-align: 1px;
+	}
+}
+
+pre {
+	background: $b3;
+	padding: 2em 4em;
+	font-size: 1.3rem;
+	code {
+		line-height: 1.6em;
+		background: inherit;
+	}
+}
+
+.code-block {
+	margin: 3em 0;
+}

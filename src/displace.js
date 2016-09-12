@@ -11,7 +11,10 @@ import {
 
 const defaultOpts = {
 	constrain: false,
-	relativeTo: undefined
+	relativeTo: null,
+	onMouseDown: null,
+	onMouseMove: null,
+	onMouseMove: null
 };
 
 
