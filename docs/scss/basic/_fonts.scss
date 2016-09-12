@@ -1,9 +1,9 @@
 @font-face {
 	font-family: 'ico';
 	src:
-		url('/fonts/ico.ttf?ib1ojd') format('truetype'),
-		url('/fonts/ico.woff?ib1ojd') format('woff'),
-		url('/fonts/ico.svg?ib1ojd#ico') format('svg');
+		url('./fonts/ico.ttf?ib1ojd') format('truetype'),
+		url('./fonts/ico.woff?ib1ojd') format('woff'),
+		url('./fonts/ico.svg?ib1ojd#ico') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }

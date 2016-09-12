@@ -4,14 +4,13 @@
   "description": "Tiny javascript library to create moveable DOM elements.",
   "main": "dist/display.min.js",
   "scripts": {
-    "build": "NODE_PATH=. NODE_ENV=prod webpack --config ./webpack.config.build.js",
-    "dev": "NODE_PATH=. NODE_ENV=prod webpack -w --config ./webpack.config.build.js",
-    "zdev": "NODE_PATH=. webpack -w --config ./dev.config.js",
-    "server1": "NODE_PATH=. webpack-dev-server -w --hot",
-    "sb": "NODE_PATH=. webpack --config ./webpack.config.server.js",
-    "server": "NODE_PATH=. webpack-dev-server -w  --config ./webpack.config.server.js",
-
-    "svg:clean": "node ./gh-page/img/cleanup.js"
+    "lib-build": "NODE_PATH=. webpack --config ./webpack.config.build.js",
+    "lib-dev": "NODE_PATH=. webpack -w --config ./webpack.config.build.js",
+    
+    "server": "http-server ./docs -p 3001 -c-1",
+    "docs-js-watch": "NODE_PATH=. webpack -w --config ./webpack.config.docs.js",
+    "docs-css-watch": "node-sass -w --output-style compressed --include-path ./node_modules  docs/scss/style.scss docs/style.css",
+    "docs-dev": "npm run docs-css-watch & npm run docs-js-watch & npm run server"
   },
   "repository": {
     "type": "git",
@@ -40,16 +39,17 @@
     ]
   },
   "homepage": "https://github.com/catc/displace#readme",
-  "devDependencies": {
+  "dependencies": {
+    "webpack": "^1.13.2",
     "babel-core": "^6.14.0",
-    "babel-eslint": "^6.0.5",
     "babel-loader": "^6.2.5",
-    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-es2015": "^6.14.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^6.0.5",
     "eslint": "^2.13.1",
     "highlight.js": "^9.6.0",
-    "node-sass": "^3.9.3",
-    "sass-loader": "^4.0.2",
-    "webpack": "^1.13.2",
-    "webpack-dev-server": "^1.15.1"
+    "http-server": "^0.9.0",
+    "node-sass": "^3.9.3"
   }
 }

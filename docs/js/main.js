@@ -1,4 +1,3 @@
-import 'style.scss';
 import highlight from 'highlight.js';
 import displace from 'dist/displace.min.js';
 
