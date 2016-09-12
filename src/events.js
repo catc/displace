@@ -20,6 +20,10 @@ export function mousedown(e){
 
 	document.addEventListener('mousemove', events.mousemove, false);
 	document.addEventListener('mouseup', events.mouseup, false);
+
+	// prevent highlighting text when dragging
+	e.preventDefault();
+	return false;
 };
 
 export function mousemove(offsetW, offsetH, e){
