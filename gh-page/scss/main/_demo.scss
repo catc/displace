@@ -90,5 +90,12 @@
 		transform: scale(1.2);
 		background: #00bacf;
 	}
+	&__msg {
+		font-size: 1.2rem;
+		display: block;
+		color: white;
+		text-align: center;
+		line-height: 100px;
+	}
 }
 
