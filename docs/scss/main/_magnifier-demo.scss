@@ -1,0 +1,51 @@
+
+.magnifier-demo {
+	width: 600px;
+	&__image-wrapper {
+		width: 400px;
+		position: relative;
+		display: inline-block;
+	}
+
+	img {
+		height: auto;
+		max-width: 100%;
+		vertical-align: middle;
+		display: block;
+	}
+
+	&__zoomer {
+		display: inline-block;
+		position: absolute;
+		left: 245px;
+		top: 102px;
+		background: rgba(255,255,255,0.4);
+		cursor: move;
+		border: 1px solid rgba(255, 255, 255, 0.7);
+	}
+
+	&__zoom-preview {
+		display: inline-block;
+		background: yellow;
+		width: 200px;
+		float: right;
+		position: relative;
+		height: 100%;
+
+		border-left: 3px solid white;
+		box-sizing: border-box;
+	}
+
+	a {
+		color: $c4;
+		text-decoration: none;
+	}
+	&__code-link {
+		color: #0b97ed !important;
+	}
+	&__photo-ref {
+		display: inline-block;
+		float: right;
+	}
+}
+
