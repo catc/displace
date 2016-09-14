@@ -50,6 +50,8 @@ displace(el, options);
 `// trigger events
 const el = document.querySelector('.moveable');
 const options = {
+	constrain: true,
+	relativeTo: document.body,
     onMouseDown: function(el){
     	el.className += ' active';
     },
