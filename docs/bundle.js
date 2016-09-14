@@ -82,7 +82,7 @@
 		0: '// regular instantiation\nconst el = document.querySelector(\'.moveable\');\ndisplace(el);\n',
 		1: '// constrained to parent container\nconst el = document.querySelector(\'.moveable\');\nconst options = {\n    constrain: true\n};\ndisplace(el, options);\n',
 		2: '// constrained relative to specified container\nconst el = document.querySelector(\'.moveable\');\nconst options = {\n    constrain: true,\n    relativeTo: document.querySelector(\'.box-1\')\n};\ndisplace(el, options);\n',
-		3: '// trigger events\nconst el = document.querySelector(\'.moveable\');\nconst options = {\n\tconstrain: true,\n\trelativeTo: document.body,\n    onMouseDown: function(el){\n    \tel.className += \' active\';\n    },\n    onMouseUp: function(el){\n    \tel.className = el.className.replace(\'active\', \'\');\n    }\n};\ndisplace(el, options);\n'
+		3: '// trigger events\nconst el = document.querySelector(\'.moveable\');\nconst options = {\n    constrain: true,\n    relativeTo: document.body,\n    onMouseDown: function(el){\n    \tel.className += \' active\';\n    },\n    onMouseUp: function(el){\n    \tel.className = el.className.replace(\'active\', \'\');\n    }\n};\ndisplace(el, options);\n'
 	};
 
 	var codeEl = document.querySelector('.demo__code code');
