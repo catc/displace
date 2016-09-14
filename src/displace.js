@@ -43,6 +43,7 @@ class Displace {
 
 		this.data = null;
 		this.events = null;
+		this.el = null;
 	}
 }
 

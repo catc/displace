@@ -124,7 +124,7 @@ const d = displace(element, options);
 		<section class="demo non-code" id="demo">
 			<h2>Demo</h2>
 			
-			<h3>Basic</h3>
+			<h3>Basic usage</h3>
 			<div class="demo__wrapper">
 				<div class="demo__actions">
 					<button>Standard</button><button>Constrain</button><button>Relative to</button><button>Events</button>
@@ -160,6 +160,34 @@ const d = displace(element, options);
 					<a href="https://gist.github.com/catc/efd9afa98eae411619a898059f8b35b5" target="_blank" class="magnifier-demo__code-link">View code</a>
 					<span class="magnifier-demo__photo-ref"><a href="https://unsplash.com/@andersjilden?photo=nrLtvA05jk8" target="_blank">Photo</a> by <a href="https://unsplash.com/@andersjilden" _blank>Anders Jildén</a></span>
 				</p>
+			</div>
+
+			<h3>Sorting</h3>
+			<div class="sorting-demo">
+				<div class="sorting-demo__wrapper">
+					<span class="sorting-demo__corner top-left">
+						<span data-name="top left" class="sorting-demo__progress"></span>
+					</span>
+					<span class="sorting-demo__corner top-right">
+						<span data-name="top right" class="sorting-demo__progress"></span>	
+					</span>
+					<span class="sorting-demo__corner bottom-left">
+						<span data-name="bottom left" class="sorting-demo__progress"></span>	
+					</span>
+					<span class="sorting-demo__corner bottom-right">
+						<span data-name="bottom right" class="sorting-demo__progress"></span>	
+					</span>
+
+					<span class="sorting-demo__sortable one"></span>
+					<span class="sorting-demo__sortable two"></span>
+					<span class="sorting-demo__sortable three"></span>
+					<span class="sorting-demo__sortable four"></span>
+				</div>
+			</div>
+
+			<div class="sorting-demo__options">
+				<a href="https://gist.github.com/catc/a7588f6bae341bbc7c2dbc941e744f18" target="_blank" class="sorting-demo__code-link">View code</a>
+				<button class="sorting-demo__reset-button">Reset demo</button>
 			</div>
 
 		</section>

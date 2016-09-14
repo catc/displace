@@ -41,6 +41,10 @@ button {
 	text-shadow: none;
 	-webkit-appearance: none;
 	-moz-appearance: none;
+    font-family: $font-main;
+    &:not(:disabled){
+        cursor: pointer;
+    }
 	&:hover, &:focus, &:active {
 		// border: none;
 		// background:none;

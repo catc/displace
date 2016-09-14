@@ -1,0 +1,118 @@
+
+.sorting-demo {
+	width: 600px;
+	background: rgba(255, 193, 7, 0.17);
+	* {
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		box-sizing: border-box;
+	}
+
+	&__wrapper {
+		height: 400px;
+		position: relative;
+		border-radius: 2px;
+	}
+	&__corner {
+		width: 100px;
+		height: 100px;
+		display: inline-block;
+		position: absolute;
+		background: $c1;
+		border: 2px solid $c2;
+		border-radius: 2px;
+
+		&.top-left {
+			top: 0;
+			left: 0;
+		}
+		&.top-right {
+			top: 0;
+			right: 0;
+		}
+		&.bottom-left {
+			bottom: 0;
+			left: 0;
+		}
+		&.bottom-right {
+			bottom: 0;
+			right: 0;
+		}
+	}
+	&__sortable {
+		$size: 40px;
+		width: $size;
+		height: $size;
+		display: inline-block;
+		border-radius: 99px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		cursor: move;
+		transition: transform 0.1s ease-out, 
+					opacity 0.3s ease-out,
+					background 0.3s ease-out;
+		border: 4px solid;
+
+		&.active {
+			transform: scale(1.1);
+			z-index: 5;
+			border-style: dotted;
+		}
+		&.inactive {
+			cursor: not-allowed;
+			background: $b6 !important;
+			border-color: $b5 !important;
+		}
+
+		&.one {
+			background: #2196f3;
+			border-color: #1380d8;
+		}
+		&.two {
+			background: #00BCD4;
+			border-color: #03a3b7;
+		}
+		&.three {
+			background: #4CAF50;
+			border-color: #3a983e;
+		}
+		&.four {
+			background: #8BC34A;
+			border-color: #78ad3b;
+		}
+	}
+
+	&__progress {
+		font-size: 1.3rem;
+		width: 100%;
+		display: inline-block;
+		text-align: center;
+		margin-top: 6px;
+	}
+
+	&__options {
+		margin-top: 1em;
+		width: 600px;
+	}
+	&__reset-button {
+		padding: 10px 14px;
+		border-radius: 4px;
+		float: right;
+		transition: 0.2s ease-out;
+		font-weight: bold;
+		color: $b5;
+		border: 2px solid $b5;
+		&:hover {
+			color: $b2;
+			border-color: $b2;
+		}
+	}
+	&__code-link {
+		color: #0b97ed;
+		display: inline-block;
+		line-height: 40px;
+	}
+}
