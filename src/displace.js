@@ -4,17 +4,27 @@ import {
 } from 'utils';
 
 import {
+	// mouse
 	mousedown,
-	mouseup
+	mouseup,
+
+	// touch
+	touchstart,
+	touchstop
 } from 'events';
 
 
 const defaultOpts = {
 	constrain: false,
 	relativeTo: null,
+
+	// events
 	onMouseDown: null,
 	onMouseMove: null,
-	onMouseMove: null
+	onMouseUp: null,
+	onTouchStart: null,
+	onTouchMove: null,
+	onTouchStop: null,
 };
 
 
@@ -40,6 +50,10 @@ class Displace {
 		el.removeEventListener('mousedown', events.mousedown, false);
 		document.removeEventListener('mousemove', events.mousemove, false);
 		document.removeEventListener('mouseup', events.mouseup, false);
+
+		el.removeEventListener('touchstart', events.touchstart, false);
+		document.removeEventListener('touchmove', events.touchmove, false);
+		document.removeEventListener('touchstop', events.touchstop, false);
 
 		this.data = null;
 		this.events = null;
@@ -84,11 +98,17 @@ function setup(){
 	this.opts = opts;
 	this.data = data;
 	this.events = {
+		// mouse events
 		mousedown: mousedown.bind(this),
-		mouseup: mouseup.bind(this)
+		mouseup: mouseup.bind(this),
+
+		// touch events
+		touchstart: touchstart.bind(this),
+		touchstop: touchstop.bind(this),
 	};
 
 	el.addEventListener('mousedown', this.events.mousedown, false);
+	el.addEventListener('touchstart', this.events.touchstart, false);
 }
 
 // export factory fn
