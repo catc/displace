@@ -52,13 +52,20 @@ const el = document.querySelector('.moveable');
 const options = {
     constrain: true,
     relativeTo: document.body,
-    onMouseDown: function(el){
-    	el.className += ' active';
-    },
-    onMouseUp: function(el){
-    	el.className = el.className.replace('active', '');
-    }
+
+    onMouseDown: active,
+    onTouchStart: active,
+    onMouseUp: inactive,
+    onTouchStop: inactive
 };
+
+function active(el){
+	el.className += ' active';
+}
+function inactive(el){
+	el.className = el.className.replace('active', '');
+}
+
 displace(el, options);
 `
 };
@@ -145,7 +152,8 @@ function setupMagnifier(){
 	// init displace
 	displace(zoomer, {
 		constrain: true,
-		onMouseMove: updatePreview
+		onMouseMove: updatePreview,
+		onTouchMove: updatePreview
 	});
 
 	// update preview
@@ -199,19 +207,24 @@ function initSortingDemo(){
 		el.style.top = genPos(105, 245) + 'px';
 		el.className = el.className.replace('inactive', '');
 		return displace(el, {
-			onMouseDown: function(el){
-				el.className += ' active';
-			},
-			onMouseUp: function(el){
-				el.className = el.className.replace('active', '');
-				checkPosition(el);
-			},
+			onMouseDown: activeClass,
+			onTouchStart: activeClass,
+			onMouseUp: inactiveClass,
+			onTouchStop: inactiveClass,
 		});
 
 		function genPos(min, max){
 			return Math.floor(Math.random()*(max-min+1)+min);
 		}
 	});
+
+	function activeClass(el){
+		el.className += ' active';
+	}
+	function inactiveClass(el){
+		el.className = el.className.replace('active', '');
+		checkPosition(el);
+	}
 
 	function checkPosition(el){
 		const x = el.offsetLeft;

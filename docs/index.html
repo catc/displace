@@ -24,6 +24,7 @@
 
 			<ul class="intro__info">
 				<li>lightweight, ~1.2kb gzipped</li>
+				<li>supports mobile touch</li>
 				<li>no dependencies/bloat</li>
 				<li>IE9+</li>
 			</ul>
@@ -95,6 +96,10 @@ const d = displace(element, options);
 					<strong class="tab">Default: </strong><code class="inline">null</code>
 				</p>
 
+				<h3 id="events">Events</h3>
+				
+				<p class="content top-space"><span class="api-info i-info-with-circle"></span>Event triggered functions are called with two arguments: the DOM element being triggered and the original event.</p>
+
 				<h4><code>options.onMouseDown</code></h4>
 				<p class="content">Function that is triggered when the DOM element is clicked.</p>
 				<p class="content">
@@ -116,7 +121,27 @@ const d = displace(element, options);
 					<strong class="tab">Default: </strong><code class="inline">null</code>
 				</p>
 
-				<p class="content top-space"><span class="api-info i-info-with-circle"></span>Event triggered functions are called with two arguments: the DOM element being triggered and the original event.</p>
+				<h4><code>options.onTouchStart</code></h4>
+				<p class="content">Function that is triggered when user initiates a touch start events on element.</p>
+				<p class="content">
+					<strong>Type: </strong><em>function</em>
+					<strong class="tab">Default: </strong><code class="inline">null</code>
+				</p>
+
+				<h4><code>options.onTouchMove</code></h4>
+				<p class="content">Function that is triggered when user moves the element via touch event.</p>
+				<p class="content">
+					<strong>Type: </strong><em>function</em>
+					<strong class="tab">Default: </strong><code class="inline">null</code>
+				</p>
+
+				<h4><code>options.onTouchStop</code></h4>
+				<p class="content">Function that is triggered when user ends touch event.</p>
+				<p class="content">
+					<strong>Type: </strong><em>function</em>
+					<strong class="tab">Default: </strong><code class="inline">null</code>
+				</p>
+
 			</div>
 		</section>
 

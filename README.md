@@ -3,6 +3,7 @@
 
 A minimal javascript library to enable moveable DOM elements.
 - ~1.2kb gzipped
+- supports mobile touch
 - no dependencies/bloat
 - IE9+
 
@@ -57,4 +58,16 @@ Function that is triggered when user moves element.
 
 #### `onMouseUp`
 Function that is triggered when user clicks up on moveable element.
+##### Default: `null`
+
+#### `onTouchStart`
+Function that is triggered when initiates touch event.
+##### Default: `null`
+
+#### `onTouchMove`
+Function that is triggered when moves element during touch event.
+##### Default: `null`
+
+#### `onTouchStop`
+Function that is triggered when user ends touch event.
 ##### Default: `null`
