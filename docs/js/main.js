@@ -67,11 +67,22 @@ function inactive(el){
 }
 
 displace(el, options);
+`,
+	4:
+`// make 'Box 3' moveable with the 'Drag me' box as the handle
+const el = document.querySelector('.box-3');
+const options = {
+	constrain: true,
+	handle: document.querySelector('.moveable'),
+	relativeTo: document.querySelector('.box-1')
+};
+displace(el, options);
 `
 };
 
 const codeEl = document.querySelector('.demo__code code');
 const moveableEl = document.querySelector('.moveable');
+const box3 = document.querySelector('.box-3');
 
 const buttons = document.querySelectorAll('.demo__actions button');
 [].forEach.call(buttons, (button, i) => {
@@ -93,6 +104,11 @@ function selectCode(i){
 	// reset element
 	moveableEl.style.top = '50px';
 	moveableEl.style.left = '50px';
+
+	// reset box 3 (due to handle example)
+	box3.style.top = '50px';
+	box3.style.left = '50px';
+	box3.style.position = 'relative';
 
 	// destroy old instance of displace if exists
 	if (displaceInstance && displaceInstance.destroy){
