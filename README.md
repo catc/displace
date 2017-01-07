@@ -37,7 +37,7 @@ Runs setup again. Useful when divs have been moved or resized.
 #### `displace.destroy()`
 Removes event listeners and destroys instance.
 
-
+<br>
 
 ### Options
 #### `constrain`
@@ -47,6 +47,12 @@ Constrains element to its parent container
 #### `relativeTo`
 Constrains element to the specified DOM element. Requires `constrain` to be `true`.
 ##### Default: `null`
+
+#### `handle`
+Assigns a child element as the moveable handle for the parent element.
+##### Default: `null`
+
+<br>
 
 #### `onMouseDown`
 Function that is triggered when user clicks down on moveable element.
@@ -71,3 +77,10 @@ Function that is triggered when moves element during touch event.
 #### `onTouchStop`
 Function that is triggered when user ends touch event.
 ##### Default: `null`
+
+
+## Development
+Clone the repo and `npm install`. Available `npm` scripts are:
+- build library: `lib-build`
+- library development (watch src files and build on change): `lib-dev`
+- docs development (port 3001): `docs-dev`
