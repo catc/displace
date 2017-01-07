@@ -6,9 +6,16 @@ const move = generateMoveFn();
 
 // mouse events
 export function mousedown(e){
+	// allow for selection of text in inputs/textareas
+	const target = e.target.tagName.toLowerCase();
+	if (target === 'input' || target === 'textarea'){
+		return;
+	}
+
 	const el = this.el;
 	const events = this.events;
 	const opts = this.opts;
+
 
 	if (typeof opts.onMouseDown === 'function'){
 		opts.onMouseDown(el, e);
@@ -21,10 +28,6 @@ export function mousedown(e){
 
 	document.addEventListener('mousemove', events.mousemove, false);
 	document.addEventListener('mouseup', events.mouseup, false);
-
-	// prevent highlighting text when dragging
-	e.preventDefault();
-	return false;
 };
 
 export function mousemove(offsetW, offsetH, e){
@@ -45,6 +48,10 @@ export function mousemove(offsetW, offsetH, e){
 		y = data.yClamp(y);
 	}
 	move(el, x, y);
+
+	// prevent highlighting text when dragging
+	e.preventDefault();
+	return false;
 };
 
 export function mouseup(e){
@@ -63,6 +70,12 @@ export function mouseup(e){
 
 // touch events
 export function touchstart(e){
+	// allow for selection of text in inputs/textareas
+	const target = e.target.tagName.toLowerCase();
+	if (target === 'input' || target === 'textarea'){
+		return;
+	}
+	
 	const el = this.el;
 	const events = this.events;
 	const opts = this.opts;
@@ -80,10 +93,6 @@ export function touchstart(e){
 	document.addEventListener('touchmove', events.touchmove, false);
 	document.addEventListener('touchend', events.touchstop, false);
 	document.addEventListener('touchcancel', events.touchstop, false);
-
-	// prevent highlighting text when dragging
-	e.preventDefault();
-	return false;
 };
 
 export function touchmove(offsetW, offsetH, e){
@@ -105,6 +114,10 @@ export function touchmove(offsetW, offsetH, e){
 		y = data.yClamp(y);
 	}
 	move(el, x, y);
+
+	// prevent highlighting text when dragging
+	e.preventDefault();
+	return false;
 };
 
 export function touchstop(e){
