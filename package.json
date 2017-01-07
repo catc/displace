@@ -4,7 +4,7 @@
   "description": "Tiny javascript library to create moveable DOM elements.",
   "main": "dist/display.min.js",
   "scripts": {
-    "lib-build": "NODE_PATH=. webpack --config ./webpack.config.build.js",
+    "lib-build": "NODE_PATH=. webpack --config ./webpack.config.build.js && NODE_PATH=. NODE_ENV=prod webpack --config ./webpack.config.build.js",
     "lib-dev": "NODE_PATH=. webpack -w --config ./webpack.config.build.js",
     
     "server": "http-server ./docs -p 3001 -c-1",
