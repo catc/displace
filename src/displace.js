@@ -17,6 +17,7 @@ import {
 const defaultOpts = {
 	constrain: false,
 	relativeTo: null,
+	handle: null,
 
 	// events
 	onMouseDown: null,
@@ -44,20 +45,21 @@ class Displace {
 		setup.call(this);
 	}
 	destroy(){
-		const el = this.el;
 		const events = this.events;
 
-		el.removeEventListener('mousedown', events.mousedown, false);
+		this.handle.removeEventListener('mousedown', events.mousedown, false);
 		document.removeEventListener('mousemove', events.mousemove, false);
 		document.removeEventListener('mouseup', events.mouseup, false);
 
-		el.removeEventListener('touchstart', events.touchstart, false);
+		this.handle.removeEventListener('touchstart', events.touchstart, false);
 		document.removeEventListener('touchmove', events.touchmove, false);
 		document.removeEventListener('touchstop', events.touchstop, false);
 
 		this.data = null;
 		this.events = null;
 		this.el = null;
+		this.handle = null;
+		this.opts = null;
 	}
 }
 
@@ -68,6 +70,9 @@ function setup(){
 
 	// set required css
 	el.style.position = 'absolute';
+
+	// set the handle
+	this.handle = opts.handle || el;
 
 	// generate min / max ranges
 	if (opts.constrain){
@@ -107,8 +112,9 @@ function setup(){
 		touchstop: touchstop.bind(this),
 	};
 
-	el.addEventListener('mousedown', this.events.mousedown, false);
-	el.addEventListener('touchstart', this.events.touchstart, false);
+	// add init events to handle
+	this.handle.addEventListener('mousedown', this.events.mousedown, false);
+	this.handle.addEventListener('touchstart', this.events.touchstart, false);
 }
 
 // export factory fn
