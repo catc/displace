@@ -6,15 +6,17 @@ const move = generateMoveFn();
 
 // mouse events
 export function mousedown(e){
-	// allow for selection of text in inputs/textareas
-	const target = e.target.tagName.toLowerCase();
-	if (target === 'input' || target === 'textarea'){
-		return;
+	const opts = this.opts;
+	if (opts.highlightInputs){
+		// allow for selection of text in inputs/textareas
+		const target = e.target.tagName.toLowerCase();
+		if (target === 'input' || target === 'textarea'){
+			return;
+		}
 	}
 
 	const el = this.el;
 	const events = this.events;
-	const opts = this.opts;
 
 
 	if (typeof opts.onMouseDown === 'function'){
@@ -70,15 +72,17 @@ export function mouseup(e){
 
 // touch events
 export function touchstart(e){
-	// allow for selection of text in inputs/textareas
-	const target = e.target.tagName.toLowerCase();
-	if (target === 'input' || target === 'textarea'){
-		return;
+	const opts = this.opts;
+	if (opts.highlightInputs){
+		// allow for selection of text in inputs/textareas
+		const target = e.target.tagName.toLowerCase();
+		if (target === 'input' || target === 'textarea'){
+			return;
+		}
 	}
 	
 	const el = this.el;
 	const events = this.events;
-	const opts = this.opts;
 
 	if (typeof opts.onTouchStart === 'function'){
 		opts.onTouchStart(el, e);

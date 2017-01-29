@@ -18,6 +18,7 @@ const defaultOpts = {
 	constrain: false,
 	relativeTo: null,
 	handle: null,
+	highlightInputs: false,
 
 	// events
 	onMouseDown: null,

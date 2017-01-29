@@ -77,7 +77,7 @@ const d = displace(element, options);
 			<div class="api">
 				<h3>Methods</h3>
 				<h4><code>displace.reinit()</code></h4>
-				<p class="content">Runs setup again. Useful when divs have been or resized.</p>
+				<p class="content">Runs setup again. Useful when divs have been changed or resized.</p>
 				<h4><code>displace.destroy()</code></h4>
 				<p class="content">Removes event listeners and destroys instance.</p>
 
@@ -101,6 +101,13 @@ const d = displace(element, options);
 				<p class="content">
 					<strong>Type: </strong><em>DOM element</em>
 					<strong class="tab">Default: </strong><code class="inline">null</code>
+				</p>
+
+				<h4><code>options.highlightInputs</code></h4>
+				<p class="content">Allows you to highlight text in inputs and textareas by disabling drag events originating from those elements.</p>
+				<p class="content">
+					<strong>Type: </strong><em>boolean</em>
+					<strong class="tab">Default: </strong><code class="inline">false</code>
 				</p>
 
 				<h3 id="events">Events</h3>

@@ -52,6 +52,10 @@ Constrains element to the specified DOM element. Requires `constrain` to be `tru
 Assigns a child element as the moveable handle for the parent element.
 ##### Default: `null`
 
+#### `highlightInputs`
+Allows you to highlight text in inputs and textareas by disabling drag events originating from those elements.
+##### Default: `false`
+
 <br>
 
 #### `onMouseDown`
