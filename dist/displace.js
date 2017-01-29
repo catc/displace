@@ -89,6 +89,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		constrain: false,
 		relativeTo: null,
 		handle: null,
+		highlightInputs: false,
 
 		// events
 		onMouseDown: null,
@@ -258,15 +259,17 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	// mouse events
 	function mousedown(e) {
-		// allow for selection of text in inputs/textareas
-		var target = e.target.tagName.toLowerCase();
-		if (target === 'input' || target === 'textarea') {
-			return;
+		var opts = this.opts;
+		if (opts.highlightInputs) {
+			// allow for selection of text in inputs/textareas
+			var target = e.target.tagName.toLowerCase();
+			if (target === 'input' || target === 'textarea') {
+				return;
+			}
 		}
 
 		var el = this.el;
 		var events = this.events;
-		var opts = this.opts;
 
 		if (typeof opts.onMouseDown === 'function') {
 			opts.onMouseDown(el, e);
@@ -320,15 +323,17 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	// touch events
 	function touchstart(e) {
-		// allow for selection of text in inputs/textareas
-		var target = e.target.tagName.toLowerCase();
-		if (target === 'input' || target === 'textarea') {
-			return;
+		var opts = this.opts;
+		if (opts.highlightInputs) {
+			// allow for selection of text in inputs/textareas
+			var target = e.target.tagName.toLowerCase();
+			if (target === 'input' || target === 'textarea') {
+				return;
+			}
 		}
 
 		var el = this.el;
 		var events = this.events;
-		var opts = this.opts;
 
 		if (typeof opts.onTouchStart === 'function') {
 			opts.onTouchStart(el, e);
