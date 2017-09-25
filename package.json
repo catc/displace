@@ -1,8 +1,8 @@
 {
-  "name": "displace",
-  "version": "1.2.0",
+  "name": "displacejs",
+  "version": "1.2.3",
   "description": "Tiny javascript library to create moveable DOM elements.",
-  "main": "dist/display.min.js",
+  "main": "dist/displace.min.js",
   "scripts": {
     "lib-build": "NODE_PATH=. webpack --config ./webpack.config.build.js && NODE_PATH=. NODE_ENV=prod webpack --config ./webpack.config.build.js",
     "lib-dev": "NODE_PATH=. webpack -w --config ./webpack.config.build.js",
@@ -12,6 +12,7 @@
     "docs-css-watch": "node-sass -w --output-style compressed --include-path ./node_modules  docs/scss/style.scss docs/style.css",
     "docs-dev": "npm run docs-css-watch & npm run docs-js-watch & npm run server"
   },
+  "engines" : { "node" : ">=5.6.0" },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/catc/displace.git"
@@ -39,13 +40,12 @@
     ]
   },
   "homepage": "https://github.com/catc/displace",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "webpack": "^1.13.2",
     "babel-core": "^6.14.0",
     "babel-loader": "^6.2.5",
-    "babel-preset-es2015": "^6.14.0"
-  },
-  "devDependencies": {
+    "babel-preset-es2015": "^6.14.0",
     "babel-eslint": "^6.0.5",
     "eslint": "^2.13.1",
     "highlight.js": "^9.6.0",

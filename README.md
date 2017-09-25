@@ -9,13 +9,22 @@ A minimal javascript library to enable moveable DOM elements.
 
 ## Getting started
 #### Reference
-Reference `displace.min.js` and use via `displace`. If using a module loader:
+Install via npm:
+
+```sh
+npm install --save displacejs
+```
+
+Reference `displace.min.js` and use via `displace`:
 ```javascript
+// es6
+import displace from 'displacejs';
+
 // commonjs
 let displace = require('displace');
 
-// es6
-import displace from 'dist/displace.min.js';
+// if using globally in browser
+const displace = window.displacejs;
 ```
 
 #### Initialize

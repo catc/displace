@@ -49,16 +49,22 @@
 		<section>
 			<div class="non-code">
 				<h2>Installation and Usage</h2>
-				<p class="content">Get the latest <code class="inline">displace.min.js</code> script. Include it in your html and reference it via <code class="inline">window.displace</code>. If using a module loader:</p>
+				Install via npm:
 			</div>
 
-<pre class="code-block"><code class="javascript">// commonjs
-let displace = require('displace');
-
-// es6
-import displace from 'dist/displace.min.js;
+<pre class="code-block"><code class="shell"># install
+$ npm install --save displacejs
 </code></pre>
-				
+<pre class="code-block"><code class="javascript">// reference
+import displace from 'displacejs';
+</code></pre>			
+
+			<div class="non-code">
+				<p class="content">If not installing via npm or using a global browser version, get the latest <code class="inline">dist/displace.min.js</code> script. Include it in your html and reference it via <code class="inline">window.displacejs</code>.</p>
+			</div>
+
+			<br><br>
+
 			<div class="non-code">
 				<p class="content">Usage is simple, just initialize with an element and any <a href="#options">options</a>.</p>
 			</div>

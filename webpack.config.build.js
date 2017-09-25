@@ -35,7 +35,7 @@ module.exports = {
 	entry: './index.js',
 	output: {
 		path: __dirname + '/dist',
-		filename: `${pack.name}${PROD ? '.min' : ''}.js`,
+		filename: `displace${PROD ? '.min' : ''}.js`,
 		library: `${pack.name}`,
 		libraryTarget: 'umd'
 	},

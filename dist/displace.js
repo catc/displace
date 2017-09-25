@@ -1,5 +1,5 @@
 /*!
- * displace.js 1.2.0 - Tiny javascript library to create moveable DOM elements.
+ * displacejs.js 1.2.2 - Tiny javascript library to create moveable DOM elements.
  * Copyright (c) 2017 Catalin Covic - https://github.com/catc/displace
  * License: MIT
  */
@@ -9,9 +9,9 @@
 	else if(typeof define === 'function' && define.amd)
 		define([], factory);
 	else if(typeof exports === 'object')
-		exports["displace"] = factory();
+		exports["displacejs"] = factory();
 	else
-		root["displace"] = factory();
+		root["displacejs"] = factory();
 })(this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
