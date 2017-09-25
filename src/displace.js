@@ -43,6 +43,7 @@ class Displace {
 	}
 
 	reinit(){
+		this.destroy();
 		setup.call(this);
 	}
 	destroy(){
@@ -55,12 +56,6 @@ class Displace {
 		this.handle.removeEventListener('touchstart', events.touchstart, false);
 		document.removeEventListener('touchmove', events.touchmove, false);
 		document.removeEventListener('touchstop', events.touchstop, false);
-
-		this.data = null;
-		this.events = null;
-		this.el = null;
-		this.handle = null;
-		this.opts = null;
 	}
 }
 

@@ -1,5 +1,5 @@
 /*!
- * displacejs.js 1.2.2 - Tiny javascript library to create moveable DOM elements.
+ * displacejs.js 1.2.4 - Tiny javascript library to create moveable DOM elements.
  * Copyright (c) 2017 Catalin Covic - https://github.com/catc/displace
  * License: MIT
  */
@@ -115,6 +115,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		}
 
 		Displace.prototype.reinit = function reinit() {
+			this.destroy();
 			setup.call(this);
 		};
 
@@ -128,12 +129,6 @@ return /******/ (function(modules) { // webpackBootstrap
 			this.handle.removeEventListener('touchstart', events.touchstart, false);
 			document.removeEventListener('touchmove', events.touchmove, false);
 			document.removeEventListener('touchstop', events.touchstop, false);
-
-			this.data = null;
-			this.events = null;
-			this.el = null;
-			this.handle = null;
-			this.opts = null;
 		};
 
 		return Displace;

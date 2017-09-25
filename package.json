@@ -1,6 +1,6 @@
 {
   "name": "displacejs",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Tiny javascript library to create moveable DOM elements.",
   "main": "dist/displace.min.js",
   "scripts": {
