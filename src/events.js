@@ -1,8 +1,3 @@
-import {
-	generateMoveFn
-} from 'utils';
-
-const move = generateMoveFn();
 
 // mouse events
 export function mousedown(e){
@@ -23,9 +18,9 @@ export function mousedown(e){
 		opts.onMouseDown(el, e);
 	}
 
+	// determine initial offset and bind to mousemove handler
 	let wOff = e.clientX - el.offsetLeft;
 	let hOff = e.clientY - el.offsetTop;
-
 	events.mousemove = mousemove.bind(this, wOff, hOff);
 
 	document.addEventListener('mousemove', events.mousemove, false);
@@ -49,7 +44,7 @@ export function mousemove(offsetW, offsetH, e){
 		x = data.xClamp(x);
 		y = data.yClamp(y);
 	}
-	move(el, x, y);
+	this.handleMove(el, x, y);
 
 	// prevent highlighting text when dragging
 	e.preventDefault();
@@ -117,7 +112,7 @@ export function touchmove(offsetW, offsetH, e){
 		x = data.xClamp(x);
 		y = data.yClamp(y);
 	}
-	move(el, x, y);
+	this.handleMove(el, x, y);
 
 	// prevent highlighting text when dragging
 	e.preventDefault();

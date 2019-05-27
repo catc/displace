@@ -1,6 +1,7 @@
 import {
 	generateClamp,
-	isRelative
+	isRelative,
+	generateMoveFn
 } from 'utils';
 
 import {
@@ -13,6 +14,7 @@ import {
 	touchstop
 } from 'events';
 
+const moveFn = generateMoveFn();
 
 const defaultOpts = {
 	constrain: false,
@@ -27,6 +29,8 @@ const defaultOpts = {
 	onTouchStart: null,
 	onTouchMove: null,
 	onTouchStop: null,
+
+	customMove: null
 };
 
 
@@ -107,6 +111,9 @@ function setup(){
 		touchstart: touchstart.bind(this),
 		touchstop: touchstop.bind(this),
 	};
+
+	// create move function - either use default move functionality or custom (if provided)
+	this.handleMove = moveFn(this.opts.customMove);
 
 	// add init events to handle
 	this.handle.addEventListener('mousedown', this.events.mousedown, false);
