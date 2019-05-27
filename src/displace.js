@@ -60,6 +60,7 @@ class Displace {
 		this.handle.removeEventListener('touchstart', events.touchstart, false);
 		document.removeEventListener('touchmove', events.touchmove, false);
 		document.removeEventListener('touchstop', events.touchstop, false);
+		document.removeEventListener('touchmove', this.events.scrollFix, { passive: false });
 	}
 }
 
@@ -110,6 +111,14 @@ function setup(){
 		// touch events
 		touchstart: touchstart.bind(this),
 		touchstop: touchstop.bind(this),
+
+		// disable scrolling on mobile while dragging
+		// https://github.com/bevacqua/dragula/issues/487
+		scrollFix: e => {
+			if (this.isDragging){
+				e.preventDefault();
+			}
+		}
 	};
 
 	// create move function - either use default move functionality or custom (if provided)
@@ -118,6 +127,9 @@ function setup(){
 	// add init events to handle
 	this.handle.addEventListener('mousedown', this.events.mousedown, false);
 	this.handle.addEventListener('touchstart', this.events.touchstart, false);
+
+	// scroll fix for mobile
+	document.addEventListener('touchmove', this.events.scrollFix, { passive: false });
 }
 
 // export factory fn

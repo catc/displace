@@ -64,7 +64,6 @@ export function mouseup(e){
 	document.removeEventListener('mousemove', events.mousemove, false);
 };
 
-
 // touch events
 export function touchstart(e){
 	const opts = this.opts;
@@ -88,6 +87,9 @@ export function touchstart(e){
 	let hOff = touch.clientY - el.offsetTop;
 
 	events.touchmove = touchmove.bind(this, wOff, hOff);
+
+	// disable scrolling
+	this.isDragging = true;
 
 	document.addEventListener('touchmove', events.touchmove, false);
 	document.addEventListener('touchend', events.touchstop, false);
@@ -120,6 +122,9 @@ export function touchmove(offsetW, offsetH, e){
 };
 
 export function touchstop(e){
+	// re-enable scrolling
+	this.isDragging = false;
+
 	const el = this.el;
 	const opts = this.opts;
 	const events = this.events;
