@@ -6,13 +6,14 @@
   "scripts": {
     "lib-build": "NODE_PATH=. webpack --config ./webpack.config.build.js && NODE_PATH=. NODE_ENV=prod webpack --config ./webpack.config.build.js",
     "lib-dev": "NODE_PATH=. webpack -w --config ./webpack.config.build.js",
-    
     "server": "http-server ./docs -p 3001 -c-1",
     "docs-js-watch": "NODE_PATH=. webpack -w --config ./webpack.config.docs.js",
     "docs-css-watch": "node-sass -w --output-style compressed --include-path ./node_modules  docs/scss/style.scss docs/style.css",
     "docs-dev": "npm run docs-css-watch & npm run docs-js-watch & npm run server"
   },
-  "engines" : { "node" : ">=5.6.0" },
+  "engines": {
+    "node": ">=5.6.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/catc/displace.git"
