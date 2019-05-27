@@ -116,6 +116,13 @@ const d = displace(element, options);
 					<strong class="tab">Default: </strong><code class="inline">false</code>
 				</p>
 
+				<h4><code>options.customMove</code></h4>
+				<p class="content">Function that overrides how x and y are being set on the displaced element as it's moved. Function called with: <code class="inline">(element, newX, newY)</code></p>
+				<p class="content">
+					<strong>Type: </strong><em>function</em>
+					<strong class="tab">Default: </strong><code class="inline">null</code>
+				</p>
+
 				<h3 id="events">Events</h3>
 				
 				<p class="content top-space"><span class="api-info i-info-with-circle"></span>Event triggered functions are called with two arguments: the DOM element being triggered and the original event.</p>
@@ -235,6 +242,16 @@ const d = displace(element, options);
 				<button class="sorting-demo__reset-button">Reset demo</button>
 			</div>
 
+			<h3>Align to grid (via customFn)</h3>
+			<div class="custom-fn">
+				<div class="custom-fn__wrapper">
+					<span class="custom-fn__div"></span>
+				</div>
+			</div>
+
+			<a href="https://github.com/catc/displace/blob/master/docs/js/demos/custom-move.js" target="_blank"
+					class="sorting-demo__code-link">View code</a>
+
 		</section>
 
 
@@ -254,6 +271,21 @@ const d = displace(element, options);
     user-select: none;
 }
 </code></pre>
+
+			<div class="non-code">
+				<p class="content">If Chrome complains about: <strong>Unable to preventDefault inside passive event listener due to target being treated as passive</strong>. Add the appropriate touch action css:
+				</p>
+			</div>
+
+<pre class="code-block"><code class="css">.your-element {
+    touch-action: none;
+}
+</code></pre>
+
+			<div class="non-code">
+				<p class="content"><a href="https://github.com/bevacqua/dragula/issues/468">See this issue</a>
+				</p>
+			</div>
 		</section>
 		
 

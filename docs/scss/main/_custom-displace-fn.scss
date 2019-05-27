@@ -1,0 +1,25 @@
+
+
+.custom-fn {
+	&__wrapper {
+		width: 600px - 1;
+		height: 400px - 1;
+		border: 1px solid $b2;
+		position: relative;
+	}
+	&__div {
+		$size: 99px;
+		display: inline-block;
+		width: $size;
+		height: $size;
+		background: $c1;
+		cursor: move;
+		top: $size + 1;
+		left: $size + 1;
+	}
+	&__line {
+		background: rgba($b6, 0.8);
+		display: inline-block;
+		position: absolute;
+	}
+}

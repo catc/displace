@@ -91,6 +91,11 @@ Function that is triggered when moves element during touch event.
 Function that is triggered when user ends touch event.
 ##### Default: `null`
 
+<br>
+
+#### `customMove`
+Function that can be used to override how x and y are being set on the displaced element on move.
+##### Default: `null`
 
 ## Development
 Clone the repo and `npm install`. Available `npm` scripts are:
