@@ -1,6 +1,6 @@
 /*!
  * displacejs.js 1.2.4 - Tiny javascript library to create moveable DOM elements.
- * Copyright (c) 2017 Catalin Covic - https://github.com/catc/displace
+ * Copyright (c) 2019 Catalin Covic - https://github.com/catc/displace
  * License: MIT
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -57,7 +57,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -69,9 +69,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	module.exports = _displace2.default;
 
-/***/ },
+/***/ }),
 /* 1 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -85,6 +85,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+	var moveFn = (0, _utils.generateMoveFn)();
+
 	var defaultOpts = {
 		constrain: false,
 		relativeTo: null,
@@ -97,7 +99,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		onMouseUp: null,
 		onTouchStart: null,
 		onTouchMove: null,
-		onTouchStop: null
+		onTouchStop: null,
+
+		customMove: null
 	};
 
 	var Displace = function () {
@@ -129,12 +133,15 @@ return /******/ (function(modules) { // webpackBootstrap
 			this.handle.removeEventListener('touchstart', events.touchstart, false);
 			document.removeEventListener('touchmove', events.touchmove, false);
 			document.removeEventListener('touchstop', events.touchstop, false);
+			document.removeEventListener('touchmove', this.events.scrollFix, { passive: false });
 		};
 
 		return Displace;
 	}();
 
 	function setup() {
+		var _this = this;
+
 		var el = this.el;
 		var opts = this.opts || defaultOpts;
 		var data = {};
@@ -180,12 +187,26 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			// touch events
 			touchstart: _events.touchstart.bind(this),
-			touchstop: _events.touchstop.bind(this)
+			touchstop: _events.touchstop.bind(this),
+
+			// disable scrolling on mobile while dragging
+			// https://github.com/bevacqua/dragula/issues/487
+			scrollFix: function scrollFix(e) {
+				if (_this.isDragging) {
+					e.preventDefault();
+				}
+			}
 		};
+
+		// create move function - either use default move functionality or custom (if provided)
+		this.handleMove = moveFn(this.opts.customMove);
 
 		// add init events to handle
 		this.handle.addEventListener('mousedown', this.events.mousedown, false);
 		this.handle.addEventListener('touchstart', this.events.touchstart, false);
+
+		// scroll fix for mobile
+		document.addEventListener('touchmove', this.events.scrollFix, { passive: false });
 	}
 
 	// export factory fn
@@ -194,9 +215,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		return new Displace(el, opts);
 	};
 
-/***/ },
+/***/ }),
 /* 2 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 
@@ -204,37 +225,46 @@ return /******/ (function(modules) { // webpackBootstrap
 		value: true
 	});
 	exports.generateClamp = generateClamp;
-	exports.generateMoveFn = generateMoveFn;
 	exports.isRelative = isRelative;
+	exports.generateMoveFn = generateMoveFn;
 	function generateClamp(min, max) {
 		return function (val) {
 			return Math.min(Math.max(val, min), max);
 		};
 	}
 
-	function generateMoveFn() {
-		if (window.requestAnimationFrame) {
-			return function (el, x, y) {
-				window.requestAnimationFrame(function () {
-					el.style.left = x + 'px';
-					el.style.top = y + 'px';
-				});
-			};
-		} else {
-			return function (el, x, y) {
-				el.style.left = x + 'px';
-				el.style.top = y + 'px';
-			};
-		}
-	}
-
 	function isRelative(el) {
 		return window.getComputedStyle(el).position === 'relative';
 	}
 
-/***/ },
+	function generateMoveFn() {
+		if (window.requestAnimationFrame) {
+			return function (customFn) {
+				var move = customFn || defaultMove;
+
+				return function (el, x, y) {
+					window.requestAnimationFrame(function () {
+						move(el, x, y);
+					});
+				};
+			};
+		}
+		return function (customFn) {
+			return function (el, x, y) {
+				var move = customFn || defaultMove;
+				move(el, x, y);
+			};
+		};
+	}
+
+	function defaultMove(el, x, y) {
+		el.style.left = x + 'px';
+		el.style.top = y + 'px';
+	}
+
+/***/ }),
 /* 3 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
 	'use strict';
 
@@ -247,10 +277,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.touchstart = touchstart;
 	exports.touchmove = touchmove;
 	exports.touchstop = touchstop;
-
-	var _utils = __webpack_require__(2);
-
-	var move = (0, _utils.generateMoveFn)();
 
 	// mouse events
 	function mousedown(e) {
@@ -270,9 +296,9 @@ return /******/ (function(modules) { // webpackBootstrap
 			opts.onMouseDown(el, e);
 		}
 
+		// determine initial offset and bind to mousemove handler
 		var wOff = e.clientX - el.offsetLeft;
 		var hOff = e.clientY - el.offsetTop;
-
 		events.mousemove = mousemove.bind(this, wOff, hOff);
 
 		document.addEventListener('mousemove', events.mousemove, false);
@@ -296,7 +322,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			x = data.xClamp(x);
 			y = data.yClamp(y);
 		}
-		move(el, x, y);
+		this.handleMove(el, x, y);
 
 		// prevent highlighting text when dragging
 		e.preventDefault();
@@ -340,6 +366,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 		events.touchmove = touchmove.bind(this, wOff, hOff);
 
+		// disable scrolling
+		this.isDragging = true;
+
 		document.addEventListener('touchmove', events.touchmove, false);
 		document.addEventListener('touchend', events.touchstop, false);
 		document.addEventListener('touchcancel', events.touchstop, false);
@@ -363,7 +392,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			x = data.xClamp(x);
 			y = data.yClamp(y);
 		}
-		move(el, x, y);
+		this.handleMove(el, x, y);
 
 		// prevent highlighting text when dragging
 		e.preventDefault();
@@ -371,6 +400,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	function touchstop(e) {
+		// re-enable scrolling
+		this.isDragging = false;
+
 		var el = this.el;
 		var opts = this.opts;
 		var events = this.events;
@@ -384,7 +416,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		document.removeEventListener('touchcancel', events.touchstop, false);
 	};
 
-/***/ }
+/***/ })
 /******/ ])
 });
 ;
