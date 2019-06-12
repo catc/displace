@@ -297,12 +297,15 @@ return /******/ (function(modules) { // webpackBootstrap
 		}
 
 		// determine initial offset and bind to mousemove handler
-		var wOff = e.clientX - el.offsetLeft;
-		var hOff = e.clientY - el.offsetTop;
-		events.mousemove = mousemove.bind(this, wOff, hOff);
+		// only if the button that was clicked is Left click
+		if(e.button === 0){
+			var wOff = e.clientX - el.offsetLeft;
+			var hOff = e.clientY - el.offsetTop;
+			events.mousemove = mousemove.bind(this, wOff, hOff);
 
-		document.addEventListener('mousemove', events.mousemove, false);
-		document.addEventListener('mouseup', events.mouseup, false);
+			document.addEventListener('mousemove', events.mousemove, false);
+			document.addEventListener('mouseup', events.mouseup, false);
+		}
 	};
 
 	function mousemove(offsetW, offsetH, e) {
