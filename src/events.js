@@ -10,21 +10,23 @@ export function mousedown(e){
 		}
 	}
 
-	const el = this.el;
-	const events = this.events;
+	// only left button is clicked
+	if (e.button === 0){
+		const el = this.el;
+		const events = this.events;
 
+		if (typeof opts.onMouseDown === 'function'){
+			opts.onMouseDown(el, e);
+		}
 
-	if (typeof opts.onMouseDown === 'function'){
-		opts.onMouseDown(el, e);
+		// determine initial offset and bind to mousemove handler
+		let wOff = e.clientX - el.offsetLeft;
+		let hOff = e.clientY - el.offsetTop;
+		events.mousemove = mousemove.bind(this, wOff, hOff);
+
+		document.addEventListener('mousemove', events.mousemove, false);
+		document.addEventListener('mouseup', events.mouseup, false);
 	}
-
-	// determine initial offset and bind to mousemove handler
-	let wOff = e.clientX - el.offsetLeft;
-	let hOff = e.clientY - el.offsetTop;
-	events.mousemove = mousemove.bind(this, wOff, hOff);
-
-	document.addEventListener('mousemove', events.mousemove, false);
-	document.addEventListener('mouseup', events.mouseup, false);
 };
 
 export function mousemove(offsetW, offsetH, e){
