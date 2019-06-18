@@ -1,5 +1,5 @@
 /*!
- * displacejs.js 1.3.1 - Tiny javascript library to create moveable DOM elements.
+ * displacejs.js 1.3.2 - Tiny javascript library to create moveable DOM elements.
  * Copyright (c) 2019 Catalin Covic - https://github.com/catc/displace
  * License: MIT
  */
@@ -289,20 +289,23 @@ return /******/ (function(modules) { // webpackBootstrap
 			}
 		}
 
-		var el = this.el;
-		var events = this.events;
+		// only left button is clicked
+		if (e.button === 0) {
+			var el = this.el;
+			var events = this.events;
 
-		if (typeof opts.onMouseDown === 'function') {
-			opts.onMouseDown(el, e);
+			if (typeof opts.onMouseDown === 'function') {
+				opts.onMouseDown(el, e);
+			}
+
+			// determine initial offset and bind to mousemove handler
+			var wOff = e.clientX - el.offsetLeft;
+			var hOff = e.clientY - el.offsetTop;
+			events.mousemove = mousemove.bind(this, wOff, hOff);
+
+			document.addEventListener('mousemove', events.mousemove, false);
+			document.addEventListener('mouseup', events.mouseup, false);
 		}
-
-		// determine initial offset and bind to mousemove handler
-		var wOff = e.clientX - el.offsetLeft;
-		var hOff = e.clientY - el.offsetTop;
-		events.mousemove = mousemove.bind(this, wOff, hOff);
-
-		document.addEventListener('mousemove', events.mousemove, false);
-		document.addEventListener('mouseup', events.mouseup, false);
 	};
 
 	function mousemove(offsetW, offsetH, e) {
