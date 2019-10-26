@@ -20,6 +20,7 @@ const defaultOpts = {
 	constrain: false,
 	relativeTo: null,
 	handle: null,
+	ignoreFn: null,
 	highlightInputs: false,
 
 	// events
@@ -78,7 +79,7 @@ function setup(){
 	// generate min / max ranges
 	if (opts.constrain){
 		const relTo = opts.relativeTo || el.parentNode;
-		
+
 		let traverse = el;
 		let minX = 0;
 		let minY = 0;
@@ -134,4 +135,3 @@ function setup(){
 
 // export factory fn
 export default (el, opts) => new Displace(el, opts);
- 
