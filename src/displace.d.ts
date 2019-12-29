@@ -17,11 +17,11 @@ type DisplaceJSOptions = {
   relativeTo?: HTMLElement,
 
   // Assigns a child element as the moveable handle for the parent element.
-  handle?: null,
+  handle?: HTMLElement,
 
   // Allows you to highlight text in inputs and textareas by disabling drag
   // events originating from those elements.
-	highlightInputs?: false,
+	highlightInputs?: boolean,
 
 	// Interaction events.
 	onMouseDown?: DisplaceJSEvent,
