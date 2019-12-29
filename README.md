@@ -107,13 +107,7 @@ Function that can be used to override how x and y are being set on the displaced
 ##### Default: `null`
 
 ## Development
-
-__If you are using Windows__, a few packages need to be installed with `npm i --global windows-build-tools`. Also, you need to have __Git Bash__ and set Git configuration to use it as a default script shell `npm config set script-shell "C:\Program Files\Git\bin\bash.exe"` (__NOTE:__ Change Git Bash path if you have it in other location).
-
-Clone the repo and install `npm install`.
-
-Available `npm` scripts are:
-
+Clone the repo and `npm install`. Available `npm` scripts are:
 - build library: `lib-build`
 - library development (watch src files and build on change): `lib-dev`
 - docs development (port 3001): `docs-dev`
