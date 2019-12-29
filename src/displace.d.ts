@@ -25,7 +25,7 @@ type DisplaceJSOptions = {
 
   // Function that allows you to prevent dragging from an event.
   // If the function returns true, the event will be ignored.
-  ignoreFn: DisplaceJSIgnoreFunction,
+  ignoreFn?: DisplaceJSIgnoreFunction,
 
 	// Interaction events.
 	onMouseDown?: DisplaceJSMouseEvent,
