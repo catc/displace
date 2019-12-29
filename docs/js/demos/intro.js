@@ -57,7 +57,21 @@ const options = {
 	relativeTo: document.querySelector('.box-1')
 };
 displace(el, options);
-`
+`,
+	5:
+		`// make 'Box 2' moveable with 'Box 3' as its handle,
+// but ignore clicks to the 'Drag me' box
+const el = document.querySelector('.box-2');
+const options = {
+	constrain: true,
+	handle: document.querySelector('.box-3'),
+	relativeTo: document.querySelector('.box-1'),
+	ignoreFn: function(event) {
+		return event.target
+			.closest('.moveable') != null
+	}
+};
+displace(el, options);`
 };
 
 const codeEl = document.querySelector('.demo__code code');

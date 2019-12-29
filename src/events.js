@@ -1,4 +1,3 @@
-
 // mouse events
 export function mousedown(e){
 	const opts = this.opts;
@@ -8,6 +7,10 @@ export function mousedown(e){
 		if (target === 'input' || target === 'textarea'){
 			return;
 		}
+	}
+
+	if (opts.ignoreFn && opts.ignoreFn(e)) {
+		return;
 	}
 
 	// only left button is clicked
@@ -76,7 +79,11 @@ export function touchstart(e){
 			return;
 		}
 	}
-	
+
+	if (opts.ignoreFn && opts.ignoreFn(e)) {
+		return;
+	}
+
 	const el = this.el;
 	const events = this.events;
 

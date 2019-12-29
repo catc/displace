@@ -3,9 +3,9 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>displace.js</title>
-		
+
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Oxygen+Mono" rel="stylesheet">
-		
+
 		<link rel="stylesheet" href="./style.css">
 
 		<meta name="description" content="Displace.js is a minimal javascript library for creating movable DOM elements.">
@@ -57,7 +57,7 @@ $ npm install --save displacejs
 </code></pre>
 <pre class="code-block"><code class="javascript">// reference
 import displace from 'displacejs';
-</code></pre>			
+</code></pre>
 
 			<div class="non-code">
 				<p class="content">If not installing via npm or using a global browser version, get the latest <code class="inline">dist/displace.min.js</code> script. Include it in your html and reference it via <code class="inline">window.displacejs</code>.</p>
@@ -68,7 +68,7 @@ import displace from 'displacejs';
 			<div class="non-code">
 				<p class="content">Usage is simple, just initialize with an element and any <a href="#options">options</a>.</p>
 			</div>
-				
+
 <pre class="code-block"><code class="javascript">const element = document.querySelector('.element')
 const d = displace(element, options);
 </code></pre>
@@ -79,7 +79,7 @@ const d = displace(element, options);
 			<h2>API</h2>
 			<h4><code>displace(element, options)</code></h4>
 			<p class="content">Instantiates new displace instance on a DOM element.</p>
-			
+
 			<div class="api">
 				<h3>Methods</h3>
 				<h4><code>displace.reinit()</code></h4>
@@ -94,7 +94,7 @@ const d = displace(element, options);
 					<strong>Type: </strong><em>boolean</em>
 					<strong class="tab">Default: </strong><code class="inline">false</code>
 				</p>
-				
+
 				<h4><code>options.relativeTo</code></h4>
 				<p class="content">Constrains element to the specified dome element. Requires <code class="inline">options.constrain</code> to be <code class="inline">true</code>.</p>
 				<p class="content">
@@ -116,6 +116,13 @@ const d = displace(element, options);
 					<strong class="tab">Default: </strong><code class="inline">false</code>
 				</p>
 
+				<h4><code>options.ignoreFn</code></h4>
+				<p class="content">Function that allows you to prevent dragging from an event. If the function returns true, the event will be ignored. Function called with: <code class="inline">(event)</code></p>
+				<p class="content">
+					<strong>Type: </strong><em>function</em>
+					<strong class="tab">Default: </strong><code class="inline">null</code>
+				</p>
+
 				<h4><code>options.customMove</code></h4>
 				<p class="content">Function that overrides how x and y are being set on the displaced element as it's moved. Function called with: <code class="inline">(element, newX, newY)</code></p>
 				<p class="content">
@@ -124,7 +131,7 @@ const d = displace(element, options);
 				</p>
 
 				<h3 id="events">Events</h3>
-				
+
 				<p class="content top-space"><span class="api-info i-info-with-circle"></span>Event triggered functions are called with two arguments: the DOM element being triggered and the original event.</p>
 
 				<h4><code>options.onMouseDown</code></h4>
@@ -175,21 +182,21 @@ const d = displace(element, options);
 		<!-- dmo -->
 		<section class="demo non-code" id="demo">
 			<h2>Demo</h2>
-			
+
 			<h3>Basic usage</h3>
 			<div class="demo__wrapper">
 				<div class="demo__actions">
-					<button>Standard</button><button>Constrain</button><button>Relative to</button><button>Events</button><button>Handle</button>
+					<button>Standard</button><button>Constrain</button><button>Relative to</button><button>Events</button><button>Handle</button><button>Ignore</button>
 				</div>
 
 				<div class="demo__selected-example">
 					<pre class="demo__code code-block"><code class="javascript">
-						
+
 					</code></pre>
 
 					<div class="demo__boxes box-1">
 						<span class="demo__tag">Box 1</span>
-						<div class="demo__one">
+						<div class="demo__one box-2">
 							<span class="demo__tag">Box 2</span>
 							<div class="demo__two box-3">
 								<span class="demo__tag">Box 3</span>
@@ -207,7 +214,7 @@ const d = displace(element, options);
 					<span class="magnifier-demo__zoomer"></span>
 				</div>
 				<div class="magnifier-demo__zoom-preview"></div>
-				
+
 				<p>
 					<a href="https://gist.github.com/catc/efd9afa98eae411619a898059f8b35b5" target="_blank" class="magnifier-demo__code-link">View code</a>
 					<span class="magnifier-demo__photo-ref"><a href="https://unsplash.com/@andersjilden?photo=nrLtvA05jk8" target="_blank">Photo</a> by <a href="https://unsplash.com/@andersjilden" _blank>Anders Jildén</a></span>
@@ -221,13 +228,13 @@ const d = displace(element, options);
 						<span data-name="top left" class="sorting-demo__progress"></span>
 					</span>
 					<span class="sorting-demo__corner top-right">
-						<span data-name="top right" class="sorting-demo__progress"></span>	
+						<span data-name="top right" class="sorting-demo__progress"></span>
 					</span>
 					<span class="sorting-demo__corner bottom-left">
-						<span data-name="bottom left" class="sorting-demo__progress"></span>	
+						<span data-name="bottom left" class="sorting-demo__progress"></span>
 					</span>
 					<span class="sorting-demo__corner bottom-right">
-						<span data-name="bottom right" class="sorting-demo__progress"></span>	
+						<span data-name="bottom right" class="sorting-demo__progress"></span>
 					</span>
 
 					<span class="sorting-demo__sortable one"></span>
@@ -287,18 +294,18 @@ const d = displace(element, options);
 				</p>
 			</div>
 		</section>
-		
+
 
 		<!-- contributing -->
 		<section class="non-code">
 			<h2>Contributing</h2>
 			<p class="content">
-				Contributing If you find any bugs, have feature requests, or would like to contribute - either send me a pull request or open a ticket and I'll do my best to follow up on it. 
+				Contributing If you find any bugs, have feature requests, or would like to contribute - either send me a pull request or open a ticket and I'll do my best to follow up on it.
 				<br><br>
  				Developed and maintained by <a href="https://github.com/catc">Catalin Covic</a> under the <a href="http://opensource.org/licenses/MIT">MIT license</a>.
 			</p>
 		</section>
-		
+
 		<script src="./bundle.js"></script>
 	</body>
 </html>

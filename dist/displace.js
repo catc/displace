@@ -91,6 +91,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		constrain: false,
 		relativeTo: null,
 		handle: null,
+		ignoreFn: null,
 		highlightInputs: false,
 
 		// events
@@ -277,7 +278,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.touchstart = touchstart;
 	exports.touchmove = touchmove;
 	exports.touchstop = touchstop;
-
 	// mouse events
 	function mousedown(e) {
 		var opts = this.opts;
@@ -287,6 +287,10 @@ return /******/ (function(modules) { // webpackBootstrap
 			if (target === 'input' || target === 'textarea') {
 				return;
 			}
+		}
+
+		if (opts.ignoreFn && opts.ignoreFn(e)) {
+			return;
 		}
 
 		// only left button is clicked
@@ -354,6 +358,10 @@ return /******/ (function(modules) { // webpackBootstrap
 			if (target === 'input' || target === 'textarea') {
 				return;
 			}
+		}
+
+		if (opts.ignoreFn && opts.ignoreFn(e)) {
+			return;
 		}
 
 		var el = this.el;
