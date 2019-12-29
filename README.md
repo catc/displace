@@ -1,3 +1,8 @@
+<!--
+TODO
+- add eslint + prettier autofix
+- update webpack
+-->
 
 # displace.js
 
