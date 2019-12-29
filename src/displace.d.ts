@@ -21,21 +21,29 @@ type DisplaceJSOptions = {
 
   // Allows you to highlight text in inputs and textareas by disabling drag
   // events originating from those elements.
-	highlightInputs?: boolean,
+  highlightInputs?: boolean,
+
+  // Function that allows you to prevent dragging from an event.
+  // If the function returns true, the event will be ignored.
+  ignoreFn: DisplaceJSIgnoreFunction,
 
 	// Interaction events.
-	onMouseDown?: DisplaceJSEvent,
-	onMouseMove?: DisplaceJSEvent,
-	onMouseUp?: DisplaceJSEvent,
-	onTouchStart?: DisplaceJSEvent,
-	onTouchMove?: DisplaceJSEvent,
-	onTouchStop?: DisplaceJSEvent,
+	onMouseDown?: DisplaceJSMouseEvent,
+	onMouseMove?: DisplaceJSMouseEvent,
+	onMouseUp?: DisplaceJSMouseEvent,
+	onTouchStart?: DisplaceJSTouchEvent,
+	onTouchMove?: DisplaceJSTouchEvent,
+	onTouchStop?: DisplaceJSTouchEvent,
 
   // Function that can be used to override how x and y are being set on the
   // displaced element on move.
 	customMove?: DisplaceJSMove
 };
 
-type DisplaceJSEvent = (element: HTMLElement) => void;
+type DisplaceJSMouseEvent = (element: HTMLElement, event: MouseEvent) => void;
+
+type DisplaceJSTouchEvent = (element: HTMLElement, event: TouchEvent) => void;
+
+type DisplaceJSIgnoreFunction = (event: Event) => boolean;
 
 type DisplaceJSMove = (element: HTMLElement, xMovement: number, yMovement: number) => void;
