@@ -310,6 +310,9 @@ return /******/ (function(modules) { // webpackBootstrap
 			document.addEventListener('mousemove', events.mousemove, false);
 			document.addEventListener('mouseup', events.mouseup, false);
 		}
+
+		// prevent highlighting text when dragging (IE)
+		e.preventDefault();
 	};
 
 	function mousemove(offsetW, offsetH, e) {

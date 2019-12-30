@@ -53,5 +53,6 @@
     "http-server": "^0.9.0",
     "node-sass": "^4.13.0",
     "webpack": "^1.13.2"
-  }
+  },
+  "types": "./src/displace.d.ts"
 }
