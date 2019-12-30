@@ -74,6 +74,9 @@ Allows you to highlight text in inputs and textareas by disabling drag events or
 Function that allows you to prevent dragging from an event. If the function returns true, the event will be ignored.
 ##### Default: `null`
 
+#### `fixed`
+Set the `position` of CSS to `fixed`. This will disable `constrain`.
+
 <br>
 
 #### `onMouseDown`
@@ -103,7 +106,13 @@ Function that is triggered when user ends touch event.
 <br>
 
 #### `customMove`
-Function that can be used to override how x and y are being set on the displaced element on move.
+Function that can be used to override how x and y are being set on the displaced element on move. The default one is
+```js
+function defaultMove(el, x, y) {
+	el.style.left = x + 'px';
+	el.style.top = y + 'px';
+}
+```
 ##### Default: `null`
 
 ## Development

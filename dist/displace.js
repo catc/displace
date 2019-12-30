@@ -93,6 +93,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		handle: null,
 		ignoreFn: null,
 		highlightInputs: false,
+		fixed: false,
 
 		// events
 		onMouseDown: null,
@@ -149,6 +150,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 		// set required css
 		el.style.position = 'absolute';
+		if (opts.fixed) {
+			el.style.position = 'fixed';
+			opts.constrain = null;
+		}
 
 		// set the handle
 		this.handle = opts.handle || el;
@@ -310,6 +315,9 @@ return /******/ (function(modules) { // webpackBootstrap
 			document.addEventListener('mousemove', events.mousemove, false);
 			document.addEventListener('mouseup', events.mouseup, false);
 		}
+
+		// prevent highlighting text when dragging (IE)
+		e.preventDefault();
 	};
 
 	function mousemove(offsetW, offsetH, e) {

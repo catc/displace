@@ -22,6 +22,7 @@ const defaultOpts = {
 	handle: null,
 	ignoreFn: null,
 	highlightInputs: false,
+	fixed: false,
 
 	// events
 	onMouseDown: null,
@@ -72,6 +73,10 @@ function setup(){
 
 	// set required css
 	el.style.position = 'absolute';
+	if (opts.fixed) {
+		el.style.position = 'fixed';
+		opts.constrain = null;
+	}
 
 	// set the handle
 	this.handle = opts.handle || el;
