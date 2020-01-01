@@ -4,9 +4,9 @@ declare module 'displacejs' {
 
 type DisplaceJSObject = {
   // Runs setup again. Useful when divs have been moved or resized.
-  reinit: function(): void,
+  reinit: () => void
   // Removes event listeners and destroys instance.
-  destroy: function(): void
+  destroy: () => void
 };
 
 type DisplaceJSOptions = {
