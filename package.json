@@ -45,14 +45,14 @@
   "devDependencies": {
     "babel-core": "^6.14.0",
     "babel-eslint": "^6.0.5",
-    "babel-loader": "^6.2.5",
+    "babel-loader": "^9.1.0",
     "babel-preset-es2015": "^6.14.0",
     "cross-env": "^6.0.3",
     "eslint": "^2.13.1",
     "highlight.js": "^9.6.0",
     "http-server": "^0.9.0",
     "node-sass": "^4.13.0",
-    "webpack": "^1.13.2"
+    "webpack": "^5.74.0"
   },
   "types": "./src/displace.d.ts"
 }
